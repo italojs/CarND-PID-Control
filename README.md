@@ -53,18 +53,20 @@ The code compiles without errors or warnings.
 
 ### Describe the effect each of the P, I, D components had in your implementation.
 
-- The proportional portion of the controller tries to steer the car toward the center line (against the cross-track error). If used along, the car overshoots the central line very easily and go out of the road very quickly. An example video where this component is used along is [./videos/proportional_error.mov](./videos/proportional_error.mov).
+- P: The  P is the proportional portion of the controller, it tries steer the car toward the center line (against the cross-track error). If used along, the car overshoots the central line very easily and go out of the road very quickly. A video example is here [./videos/proportional_error.mov](./videos/proportional_error.mov).
 
-- The integral portion tries to eliminate a possible bias on the controlled system that could prevent the error to be eliminated. If used along, it makes the car to go in circles. In the case of the simulator, no bias is present. An example video where this component is used along is [./videos/integral_error.mov](./videos/integral_error.mov).
+- I: The I is the integral portion, it tries to remove a bias on the controlled system that could prevent the real error to be eliminated. but the simulator, don't has a bias . A video example is here [./videos/integral_error.mov](./videos/integral_error.mov).
 
-- The differential portion helps to counteract the proportional trend to overshoot the center line by smoothing the approach to it. An example video where this component is used along is [./videos/differential.mov](./videos/differential.mov).
+- D: The D is the differential portion, it helps the car to counteract the trend to overshoot the center line by smoothing the approach to it. An example video where this component is used along is [./videos/differential.mov](./videos/differential.mov).
 
 ### Describe how the final hyperparameters were chosen.
 
-The parameters were chosen manually by try and error. First, make sure the car can drive straight with zero as parameters. Then add the proportional and the car start going on following the road but it starts overshooting go out of it. Then add the differential to try to overcome the overshooting. The integral part only moved the car out of the road; so, it stayed as zero. After the car drove the track without going out of it, the parameters increased to minimize the average cross-track error on a single track lap. The final parameters where [P: 1.5, I: 0.0, D: 2.5].
+I choose these param by try and errors.
+
+ I tried make sure the car can drive straight with 0 as param. Then I added the P, so the car start going on following the road. Then added the D . When i added the I part, it the car go out of the road, so, it stayed as zero. The final parameters where [P: 1.5, I: 0.0, D: 2.5].
 
 ## Simulation
 
 ### The vehicle must successfully drive a lap around the track.
 
-A short video with the final parameters is [./videos/final_params.mov](./videos/final_params.mov).
+A video with the final parameters is this [./videos/final_params.mov](./videos/final_params.mov).
